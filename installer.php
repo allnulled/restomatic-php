@@ -83,7 +83,7 @@
             <hr />
             <div style="padding:4px;">
                 <div>AUTENTIFICADOR:</div>
-                <div class="explicacion_de_campo">Este campo se requerirá en la cabecera HTTP de «Authentication» de todas las peticiones para las operaciones INSERT, UPDATE y DELETE.</div>
+                <div class="explicacion_de_campo">Este campo se requerirá en la cabecera HTTP de «Authorization» de todas las peticiones para las operaciones INSERT, UPDATE y DELETE.</div>
                 <input class="input_de_texto" type="text" name="autentificador" />
             </div>
             <div style="padding:4px;">
