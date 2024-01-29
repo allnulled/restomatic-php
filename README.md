@@ -19,8 +19,9 @@ Tienes un script en la raíz del proyecto, «database.sql». Puedes utilizarlo c
 
 ![Instalacion_completada](./docs/img/instalacion_completada.png)
 
-5. Comprobar que devuelve un error en formato JSON.
-6. Ir a «/jrtui» para probar el tester.
-7. Pasarle siempre los 2 parámetros clave en formato JSON:
+5. Ir al endpoint del servidor correspondiente al «index.php» del proyecto descargado.
+6. Comprobar que devuelve un error en formato JSON.
+7. Ir a «/jrtui» para probar el tester.
+8. Pasarle siempre los 2 parámetros clave en formato JSON:
    1. El parámetro «operation» con: select | insert | update | delete.
    2. El parámetro «table» con el nombre del modelo que quieres atacar.
