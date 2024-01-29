@@ -203,14 +203,18 @@ class DatabaseModel
 		$this->framework->utils->include_hook("common/before.inc.php");
 		$this->framework->utils->include_hook("update/action/before.inc.php");
 		$this->framework->utils->include_hook("update/on_build_query_update_from/before.inc.php");
+		$this->framework->utils->include_hook("update/on_build_query_update_from/action.inc.php");
 		$this->framework->utils->include_hook("update/on_build_query_update_from/after.inc.php");
 		$this->framework->utils->include_hook("update/on_build_query_update_set/before.inc.php");
+		$this->framework->utils->include_hook("update/on_build_query_update_set/action.inc.php");
 		$this->framework->utils->include_hook("update/on_build_query_update_set/after.inc.php");
 		$this->framework->utils->include_hook("update/on_build_query_update_where/before.inc.php");
+		$this->framework->utils->include_hook("update/on_build_query_update_where/action.inc.php");
 		$this->framework->utils->include_hook("update/on_build_query_update_where/after.inc.php");
-		$this->framework->utils->include_hook("update/action/after.inc.php");
 		$this->framework->utils->include_hook("update/on_execute_query/before.inc.php");
+		$this->framework->utils->include_hook("update/on_execute_query/action.inc.php");
 		$this->framework->utils->include_hook("update/on_execute_query/after.inc.php");
+		$this->framework->utils->include_hook("update/action/after.inc.php");
 		$this->framework->utils->include_hook("common/after.inc.php");
 		return $this->framework->utils->print_json($request->get_setting("output"));
 	}
@@ -220,12 +224,15 @@ class DatabaseModel
 		$this->framework->utils->include_hook("common/before.inc.php");
 		$this->framework->utils->include_hook("delete/action/before.inc.php");
 		$this->framework->utils->include_hook("delete/on_build_query_delete_from/before.inc.php");
+		$this->framework->utils->include_hook("delete/on_build_query_delete_from/action.inc.php");
 		$this->framework->utils->include_hook("delete/on_build_query_delete_from/after.inc.php");
 		$this->framework->utils->include_hook("delete/on_build_query_delete_where/before.inc.php");
+		$this->framework->utils->include_hook("delete/on_build_query_delete_where/action.inc.php");
 		$this->framework->utils->include_hook("delete/on_build_query_delete_where/after.inc.php");
-		$this->framework->utils->include_hook("delete/action/after.inc.php");
 		$this->framework->utils->include_hook("delete/on_execute_query/before.inc.php");
+		$this->framework->utils->include_hook("delete/on_execute_query/action.inc.php");
 		$this->framework->utils->include_hook("delete/on_execute_query/after.inc.php");
+		$this->framework->utils->include_hook("delete/action/after.inc.php");
 		$this->framework->utils->include_hook("common/after.inc.php");
 		return $this->framework->utils->print_json($request->get_setting("output"));
 	}
