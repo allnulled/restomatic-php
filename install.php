@@ -70,7 +70,7 @@ file_put_contents("installed.txt","Yes");
             <div style="padding: 4px;text-align: center;">
                 <h2>Instalación completada</h2>
                 <h4 style="padding: 12px;">Ya puedes empezar a usar la API REST</h4>
-                <h4>En punto de entrada es <a href="./index.php">aquí</a></h4>
+                <h4>El punto de entrada es <a href="./index.php">aquí</a></h4>
             </div>
             <hr />
             <div style="padding:12px; text-align: center;">¡Tu <b>API REST</b> ya está funcionando!</div>
