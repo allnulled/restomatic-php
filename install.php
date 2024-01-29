@@ -76,7 +76,7 @@ file_put_contents("installed.txt","Yes");
             <div style="padding:12px; text-align: center;">¡Tu <b>API REST</b> ya está funcionando!</div>
             <hr />
             <div style="padding:4px; font-size: 11px;">
-                <div style="text-align: justify;">Solo tienes que empezar a hacer peticiones REST. Pero antes de que te vayas, puedes recordar algunos puntos sobre cómo funciona deben ser todas las peticiones:</div>
+                <div style="text-align: justify;">Solo tienes que empezar a hacer peticiones REST. Pero antes de que te vayas, puedes recordar algunos puntos sobre cómo deben ser todas las peticiones:</div>
                 <ul style="padding-left: 20px;">
                     <li>Deben ser con el método POST.</li>
                     <li>Deben que contener la cabecera "Content-Type: application/json".</li>
@@ -88,12 +88,12 @@ file_put_contents("installed.txt","Yes");
                     <div>En cuanto a las operaciones, cabe recordar que:</div>
                     <ul style="padding-left: 20px;">
                         <li>En el caso del SELECT, no hay nada que hacer: devolverá todos los registros, simplemente.</li>
-                        <li>En el caso del INSERT, hay 1 parámetro: |value» que debe ser un objeto con los valores a insertar.</li>
+                        <li>En el caso del INSERT, hay 1 parámetro: «value» que debe ser un objeto con los valores a insertar.</li>
                         <li>En el caso del UPDATE, hay 2 parámetros: «value» que debe ser un objeto con los valores a actualizar, e «id» que debe ser un número entero con el ID del registro a actualizar.</li>
                         <li>En el caso del DELETE, hay 1 parámetro: «id» que debe ser un número entero con el ID del registro a eliminar.</li>
-                        <li>Y ya está. Con esto, ya deberías tener claro todo lo que hay que saber.</li>
                     </ul>
                 </div>
+                <div>Y ya está. Con esto, ya deberías tener claro todo lo que hay que saber.</div>
             </div>
             <hr/>
             <div style="font-size: 11px;padding:4px;">
