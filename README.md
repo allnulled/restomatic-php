@@ -1,4 +1,4 @@
-# restomatic
+# restomatic-php
 
 Pequeño framework para automatizar despliegues HTTP REST API. Basado en hooks y SQL.
 
