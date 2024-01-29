@@ -42,3 +42,9 @@ Abre el «/jtrui» desde el navegador, tú debes saber la ruta correcta, que es 
 - Para hacer un DELETE, en «Contenido» pon «{"operation":"delete","table":"Usuario","id":1}».
 
 Con esta sencilla guía, puedes interactuar con la base de datos.
+
+Esta es una imagen de un INSERT exitoso:
+
+![Insert_exitoso](./docs/img/jtrui_insert_exitoso.png)
+
+Eso es todo. Si sabes lo que es una API REST, ya sabes más o menos cómo explotar esta herramienta, que te puede ahorrar mucho código.
