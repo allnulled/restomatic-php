@@ -70,10 +70,10 @@
             <hr />
             <div style="padding:4px;">
                 <div>Escribe el código fuente de la nueva base de datos SQL:</div>
-                <textarea name="base_de_datos" class="textarea_de_codigo" placeholder="Aquí el código SQL para crear la base de datos"></textarea>
+                <textarea name="base_de_datos" class="textarea_de_codigo" placeholder="Aquí el código SQL para crear la base de datos" spellcheck="false"></textarea>
             </div>
             <div style="text-align:right; padding: 4px; padding-top: 0px;">
-                <input type="submit" class="boton">Crear API REST</button>
+                <input type="submit" class="boton" value="Crear API REST" />
             </div>
         </form>
     </div>

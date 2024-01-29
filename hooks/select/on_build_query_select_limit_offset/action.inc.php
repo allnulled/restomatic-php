@@ -1,5 +1,11 @@
 <?php
 
-get_rest_request()->expand_setting("output", array(
-    "select.on_build_query_select_limit_offset.action" => "OK"
-));
+$framework = get_rest_framework();
+$request = get_rest_request();
+$utils = $framework->utils;
+
+$query = $request->get_setting("query");
+
+$query .= ";";
+
+$request->set_setting("query", $query);

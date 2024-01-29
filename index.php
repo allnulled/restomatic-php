@@ -27,14 +27,18 @@ function get_rest_request()
 
 class RequestState
 {
+	public $model = null;
 	public $operation = null;
+	public $framework = null;
 	public $table = null;
 	public $parameters = null;
 	public $settings = null;
-	public function __construct($operation, $table)
+	public function __construct($operation, $table, $model)
 	{
 		$GLOBALS["request_state"] = $this;
-		$this->parameters = array();
+		$this->model = $model;
+		$this->framework = get_rest_framework();
+		$this->parameters = $this->framework->utils->get_request_parameters();
 		$this->settings = array();
 		$this->operation = $operation;
 		$this->table = $table;
@@ -106,6 +110,14 @@ class FrameworkUtilities
 		}
 		include($fullpath);
 	}
+	public function generate_random_string($longitud) {
+		$alphabet = explode("", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		$random_string = "";
+		for ($i = 0; $i < $longitud; $i++) {
+			$random_string = array_rand($alphabet, 1);
+		}
+		return $random_string;
+	}
 }
 
 class Framework
@@ -137,7 +149,7 @@ class SqliteDatabase
 	}
 	public function query($query)
 	{
-		return $this->native_db->querySingle($query);
+		return $this->native_db->query($query);
 	}
 }
 
@@ -154,7 +166,7 @@ class DatabaseModel
 	}
 	public function select()
 	{
-		$request = new RequestState("select", $this->name);
+		$request = new RequestState("select", $this->name, $this);
 		$this->framework->utils->include_hook("common/before.inc.php");
 		$this->framework->utils->include_hook("select/action/before.inc.php");
 		$this->framework->utils->include_hook("select/on_build_query_select_from/before.inc.php");
@@ -181,7 +193,7 @@ class DatabaseModel
 	}
 	public function insert()
 	{
-		$request = new RequestState("insert", $this->name);
+		$request = new RequestState("insert", $this->name, $this);
 		$this->framework->utils->include_hook("common/before.inc.php");
 		$this->framework->utils->include_hook("insert/action/before.inc.php");
 		$this->framework->utils->include_hook("insert/on_build_query_insert_into/before.inc.php");
@@ -191,7 +203,7 @@ class DatabaseModel
 		$this->framework->utils->include_hook("insert/on_build_query_insert_values/action.inc.php");
 		$this->framework->utils->include_hook("insert/on_build_query_insert_values/after.inc.php");
 		$this->framework->utils->include_hook("insert/on_execute_query/before.inc.php");
-		$this->framework->utils->include_hook("insert/on_execute_query/actopm.inc.php");
+		$this->framework->utils->include_hook("insert/on_execute_query/action.inc.php");
 		$this->framework->utils->include_hook("insert/on_execute_query/after.inc.php");
 		$this->framework->utils->include_hook("insert/action/after.inc.php");
 		$this->framework->utils->include_hook("common/after.inc.php");
@@ -199,7 +211,7 @@ class DatabaseModel
 	}
 	public function update()
 	{
-		$request = new RequestState("update", $this->name);
+		$request = new RequestState("update", $this->name, $this);
 		$this->framework->utils->include_hook("common/before.inc.php");
 		$this->framework->utils->include_hook("update/action/before.inc.php");
 		$this->framework->utils->include_hook("update/on_build_query_update_from/before.inc.php");
@@ -220,7 +232,7 @@ class DatabaseModel
 	}
 	public function delete()
 	{
-		$request = new RequestState("delete", $this->name);
+		$request = new RequestState("delete", $this->name, $this);
 		$this->framework->utils->include_hook("common/before.inc.php");
 		$this->framework->utils->include_hook("delete/action/before.inc.php");
 		$this->framework->utils->include_hook("delete/on_build_query_delete_from/before.inc.php");
