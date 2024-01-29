@@ -1,0 +1,61 @@
+.topbar_height {
+    height: 60px;
+}
+
+.topbar_height_as_width {
+    width: 60px;
+}
+
+.topbar_title {
+    font-size: 28px;
+}
+
+.navigation_height_compensation {
+    height: 60px;
+}
+
+.navigation_component {
+    width: 100%;
+    left: -100%;
+    border: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    transition: left .2s linear;
+}
+
+.navigation_component.is_selected {
+    left: 0px;
+}
+
+.navigation_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #DDDDDD;
+    opacity: 0.9;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .topbar_title {
+        font-size: 18px;
+    }
+    
+    .topbar_height {
+        height: 40px;
+    }
+
+    .topbar_height_as_width {
+        width: 40px;
+    }
+
+    h3 {
+        padding-top: 40px;
+    }
+
+    .navigation_height_compensation {
+        height: 40px;
+    }
+
+}

@@ -1,0 +1,64 @@
+{
+  "name": "vue-boilerplate-better",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vue.js (v2) boilerplate project based on win7.css, includes: dialogs, badges, ajax, database, storage, customizable styles & themes, +80 web components, etc.",
+  "author": "allnulled",
+  "scripts": {
+    "serve": "NODE_OPTIONS=--openssl-legacy-provider npm run serve-internal",
+    "serve-internal": "vue-cli-service serve",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build && rm -rf docs && cp -R dist docs && rm -rf dist",
+    "build-styles": "npx sass './src/lib/styles/all.scss' > './src/lib/styles/all.css'",
+    "build-xcomponents": "npx browserify './src/lib/xcomponents/components/api.js' > './src/lib/xcomponents/xcomponents.js'",
+    "lint": "vue-cli-service lint",
+    "dev-styles": "npx nodemon -e 'scss' -w src -x 'npm run build-styles'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "src/main.js",
+  "dependencies": {
+    "@allnulled/check-that": "0.0.1",
+    "@panter/vue-i18next": "^0.15.2",
+    "axios": "^0.24.0",
+    "core-js": "^3.6.5",
+    "dexie": "^2.0.4",
+    "dexie-relationships": "^1.2.11",
+    "i18next": "^21.6.3",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "push.js": "^1.0.12",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.3",
+    "vuedraggable": "^2.24.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "_id": "vue2-boilerplate@1.0.0",
+  "keywords": [],
+  "license": "WTFPL",
+  "readme": "README.md"
+}
