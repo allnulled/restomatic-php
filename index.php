@@ -4,21 +4,23 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $method = $_SERVER["REQUEST_METHOD"];
 if ($method == "OPTIONS") {
 	die();
 }
-
 if(!file_exists("installed.txt")) {
 	include("installer.php");
 	die();
 }
-
 header("Content-Type: application/json");
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+$admin_token = file_get_contents("./installed.txt");
+$request_headers = apache_request_headers();
+$request_token = array_key_exists("Authorization", $request_headers) ? $request_headers["Authorization"] : "";
+$is_admin = (!empty($request_token)) && ($admin_token === $request_token);
+define("IS_ADMIN", $is_admin);
 
 function get_rest_request()
 {
@@ -33,7 +35,8 @@ class RequestState
 	public $table = null;
 	public $parameters = null;
 	public $settings = null;
-	public function __construct($operation, $table, $model)
+	public $is_admin = IS_ADMIN;
+	public function __construct ($operation, $table, $model)
 	{
 		$GLOBALS["request_state"] = $this;
 		$this->model = $model;
@@ -250,26 +253,28 @@ class DatabaseModel
 	}
 }
 
-$parameters = get_rest_framework()->utils->get_request_parameters();
-$operation = get_rest_framework()->utils->get_array_property($parameters, "operation", null);
-
+$framework = get_rest_framework();
+$utils = $framework->utils;
+$parameters = $utils->get_request_parameters();
+$operation = $utils->get_array_property($parameters, "operation", null);
+if($operation === "schema") {
+	$schema_contents = file_get_contents("./schema.json");
+	echo $schema_contents;
+	return;
+}
+$table = $utils->get_array_property($parameters, "table", null);
 if (is_null($operation)) {
-	get_rest_framework()->utils->print_json(array("message" => "Se requiere parámetro 'operation' en controlador REST principal"));
+	$utils->print_json(array("message" => "Se requiere parámetro 'operation' en controlador REST principal"));
 	return;
 }
-
 if (!in_array($operation, array("select", "insert", "update", "delete"))) {
-	get_rest_framework()->utils->print_json(array("message" => "Se requiere parámetro 'operation' que sea válido en controlador REST principal"));
+	$utils->print_json(array("message" => "Se requiere parámetro 'operation' que sea válido en controlador REST principal"));
 	return;
 }
-
-$table = get_rest_framework()->utils->get_array_property($parameters, "table", null);
-
 if (is_null($table)) {
-	get_rest_framework()->utils->print_json(array("message" => "Se requiere parámetro 'table' en controlador REST principal"));
+	$utils->print_json(array("message" => "Se requiere parámetro 'table' en controlador REST principal"));
 	return;
 }
-
 $model = new DatabaseModel($table, $framework->database);
 $model->$operation();
 

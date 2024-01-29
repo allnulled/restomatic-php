@@ -12,7 +12,11 @@ $query .= " (";
 
 $item = $request->get_parameter("value");
 if(!is_array($item)) {
-    throw new Exception("Se requiere parametro «value» como un objeto");
+    $utils->print_json(array(
+        "error" => true,
+        "message" => "Se requiere parametro «value» como un objeto"
+    ));
+    die();
 }
 $index_property = 0;
 foreach ($item as $key => $value) {

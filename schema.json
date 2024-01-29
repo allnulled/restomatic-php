@@ -1,0 +1,154 @@
+[
+  {
+    "tabla": "Usuario",
+    "atributos": [],
+    "composicion": [
+      {
+        "sentencia": "columna",
+        "columna": "id",
+        "tipo": "INTEGER",
+        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "nombre",
+        "tipo": "VARCHAR",
+        "detalles": "(255) UNIQUE",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "contrasenya",
+        "tipo": "VARCHAR",
+        "detalles": "(255)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "correo_electronico",
+        "tipo": "VARCHAR",
+        "detalles": "(255)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "imagen_de_perfil",
+        "tipo": "VARCHAR",
+        "detalles": "(516)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "descripcion",
+        "tipo": "VARCHAR",
+        "detalles": "(255)",
+        "atributos": []
+      }
+    ],
+    "script": "CREATE TABLE Usuario (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    nombre VARCHAR(255) UNIQUE,\n    contrasenya VARCHAR(255),\n    correo_electronico VARCHAR(255),\n    imagen_de_perfil VARCHAR(516),\n    descripcion VARCHAR(255)\n);"
+  },
+  {
+    "tabla": "Permiso",
+    "atributos": [],
+    "composicion": [
+      {
+        "sentencia": "columna",
+        "columna": "id",
+        "tipo": "INTEGER",
+        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "nombre",
+        "tipo": "VARCHAR",
+        "detalles": "(255) UNIQUE",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "descripcion",
+        "tipo": "VARCHAR",
+        "detalles": "(255)",
+        "atributos": []
+      }
+    ],
+    "script": "\nCREATE TABLE Permiso (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    nombre VARCHAR(255) UNIQUE,\n    descripcion VARCHAR(255)\n);"
+  },
+  {
+    "tabla": "Usuario_y_permiso",
+    "atributos": [],
+    "composicion": [
+      {
+        "sentencia": "columna",
+        "columna": "id",
+        "tipo": "INTEGER",
+        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "id_usuario",
+        "tipo": "INTEGER",
+        "detalles": "",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "id_permiso",
+        "tipo": "INTEGER",
+        "detalles": "",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "detalles",
+        "tipo": "VARCHAR",
+        "detalles": "(255)",
+        "atributos": []
+      },
+      {
+        "sentencia": "clave foránea",
+        "columna": "id_usuario",
+        "tabla_foranea": "Usuario",
+        "columna_foranea": "id"
+      },
+      {
+        "sentencia": "clave foránea",
+        "columna": "id_permiso",
+        "tabla_foranea": "Permiso",
+        "columna_foranea": "id"
+      }
+    ],
+    "script": "\nCREATE TABLE Usuario_y_permiso (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    id_usuario INTEGER,\n    id_permiso INTEGER,\n    detalles VARCHAR(255),\n    FOREIGN KEY (id_usuario) REFERENCES Usuario (id),\n    FOREIGN KEY (id_permiso) REFERENCES Permiso (id)\n);"
+  },
+  {
+    "tabla": "Pais",
+    "atributos": [],
+    "composicion": [
+      {
+        "sentencia": "columna",
+        "columna": "id",
+        "tipo": "INTEGER",
+        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "pais",
+        "tipo": "VARCHAR",
+        "detalles": "(255)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "iso",
+        "tipo": "VARCHAR",
+        "detalles": "(10)",
+        "atributos": []
+      }
+    ],
+    "script": "\n\nCREATE TABLE Pais (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    pais VARCHAR(255),\n    iso VARCHAR(10)\n);"
+  }
+]

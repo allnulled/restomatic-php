@@ -20,3 +20,12 @@ CREATE TABLE Usuario_y_permiso (
     FOREIGN KEY (id_permiso) REFERENCES Permiso (id)
 );
 
+CREATE TABLE Pais (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pais VARCHAR(255),
+    iso VARCHAR(10)
+);
+
+INSERT INTO Pais (pais, iso) VALUES ('España', 'es');
+INSERT INTO Pais (pais, iso) VALUES ('Estados Unidos de América', 'us');
+INSERT INTO Pais (pais, iso) VALUES ('Alemania', 'ge');

@@ -2,8 +2,20 @@
 
 $database = new SQLite3("database.sqlite");
 $code = $_POST["base_de_datos"];
-$database->querySingle($code);
-file_put_contents("installed.txt","Yes");
+$password = $_POST["autentificador"];
+$structure = $_POST["estructura"];
+$migration = $_POST["migracion"];
+if(empty($code)) {
+    include("./installer.php");
+    die();
+}
+if(empty($password)) {
+    include("./installer.php");
+    die();
+}
+$database->query($code . "\n" . $migration);
+file_put_contents("installed.txt",$password);
+file_put_contents("schema.json", $structure);
 
 ?>
 <!DOCTYPE html>
@@ -79,25 +91,25 @@ file_put_contents("installed.txt","Yes");
                 <div style="text-align: justify;">Solo tienes que empezar a hacer peticiones REST. Pero antes de que te vayas, puedes recordar algunos puntos sobre cómo deben ser todas las peticiones:</div>
                 <ul style="padding-left: 20px;">
                     <li>Deben ser con el método POST.</li>
-                    <li>Deben que contener la cabecera "Content-Type: application/json".</li>
-                    <li>Deben que contener el parámetro «operation» con select, insert, update o delete.</li>
-                    <li>Deben que contener el parámetro «table» con el nombre de la tabla.</li>
+                    <li>Deben contener la cabecera "Content-Type: application/json".</li>
+                    <li>Deben contener el parámetro «operation» con select, insert, update o delete.</li>
+                    <li>Deben contener el parámetro «table» con el nombre de la tabla.</li>
                     <li>Deben contener en su cuerpo directamente el JSON que se pasa.</li>
                 </ul>
                 <div>
                     <div>En cuanto a las operaciones, cabe recordar que:</div>
                     <ul style="padding-left: 20px;">
-                        <li>En el caso del SELECT, no hay nada que hacer: devolverá todos los registros, simplemente.</li>
-                        <li>En el caso del INSERT, hay 1 parámetro: «value» que debe ser un objeto con los valores a insertar.</li>
-                        <li>En el caso del UPDATE, hay 2 parámetros: «value» que debe ser un objeto con los valores a actualizar, e «id» que debe ser un número entero con el ID del registro a actualizar.</li>
-                        <li>En el caso del DELETE, hay 1 parámetro: «id» que debe ser un número entero con el ID del registro a eliminar.</li>
+                        <li>En el caso del SELECT, no hay nada que hacer: devolverá todos los registros de la tabla que especifiquemos, simplemente.</li>
+                        <li>En el caso del INSERT, hay 1 parámetro añadido: «value» que debe ser un objeto con los valores a insertar.</li>
+                        <li>En el caso del UPDATE, hay 2 parámetros añadido: «value» que debe ser un objeto con los valores a actualizar, e «id» que debe ser un número entero con el ID del registro a actualizar.</li>
+                        <li>En el caso del DELETE, hay 1 parámetro añadido: «id» que debe ser un número entero con el ID del registro a eliminar.</li>
                     </ul>
                 </div>
                 <div>Y ya está. Con esto, ya deberías tener claro todo lo que hay que saber.</div>
             </div>
             <hr/>
             <div style="font-size: 11px;padding:4px;">
-                <div>Para hacer pruebas, tienes el <a href="./jrtui">JSON Request Tester User Interface</a>. Con él puedes hacer las peticiones de prueba contra el servidor.</div>
+                <div>Para hacer pruebas, tienes el <a href="./jrtui">JSON Request Tester User Interface</a>. Con él puedes hacer las peticiones de prueba con todo lo que sabes ahora contra el servidor.</div>
             </div>
         </form>
     </div>

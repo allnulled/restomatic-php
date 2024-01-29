@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "NODE_OPTIONS=--openssl-legacy-provider npm run serve-internal",
     "serve-internal": "vue-cli-service serve",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build && rm -rf docs && cp -R dist docs && rm -rf dist",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service build && rm -rf docs && cp -R dist docs && rm -rf dist && rm -rf ../jrtui && mkdir ../jrtui && cp -R docs/* ../jrtui",
     "build-styles": "npx sass './src/lib/styles/all.scss' > './src/lib/styles/all.css'",
     "build-xcomponents": "npx browserify './src/lib/xcomponents/components/api.js' > './src/lib/xcomponents/xcomponents.js'",
     "lint": "vue-cli-service lint",

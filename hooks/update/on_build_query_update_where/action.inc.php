@@ -10,7 +10,11 @@ $query .= "\nWHERE ";
 
 $id = $request->get_parameter("id");
 if(!is_integer($id)) {
-    throw new Exception("Se requiere parametro «id» como un entero");
+    $utils->print_json(array(
+        "error" => true,
+        "message" => "Se requiere parametro «id» como un entero"
+    ));
+    die();
 }
 $query .= " id = ";
 $query .= $utils->escape_sql_string($id);

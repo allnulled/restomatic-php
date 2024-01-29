@@ -1,5 +1,7 @@
 <template>
   <div class="ApplicationPage Component">
+    <ztitle>JRTUI</ztitle>
+    <zsubtitle>JSON requests easy</zsubtitle>
     <zlayouthorizontal>
       <zlayouthorizontalitem class="padding_1" style="min-width:110px;">
         <zformselect :initial-value="metodo" :on-change="v => metodo = v" :options="['GET','POST','PUT','DELETE','PATCH','HEAD','OPTIONS']">Método:</zformselect>
