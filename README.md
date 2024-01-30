@@ -17,7 +17,7 @@ To build easy and fast HTTP REST APIs using static PHP and SQL database (SQLite 
 4. Visit the «index.php» with the navigator in order to open the installator. *Image 1.* ![Instalador](./docs/img/instalador.png)
 5. Fulfill the installator. *Image 2.* ![Instalador](./docs/img/instalador_2.png)
 6. Click on "Create REST API". *Image 3.* ![Instalacion_completada](./docs/img/instalacion_completada.png)
-7. Visit the «/jtrui» to test your new fresh API. *Image 4.* ![Tester](./docs/img/jtrui_insert_exitoso.png.png)
+7. Visit the «/jtrui» to test your new fresh API. *Image 4.* ![Tester](./docs/img/jtrui_insert_exitoso.png)
 
 ### What else?
 
