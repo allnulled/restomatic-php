@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +74,7 @@
         <form action="install.php" method="POST">
             <div style="padding: 4px;text-align: center;">
                 <h2>De SQL a API REST automáticamente</h2>
-                <h4 style="padding: 12px;">Usando <a href="https://www.php.net/manual/es/book.sqlite3.php">SQLite</a> y <a href="https://www.php.net">PHP</a></h4>
+                <h4 style="padding: 12px;">Usando <a href="https://www.php.net/manual/es/book.sqlite3.php">SQLite</a> o <a href="https://www.php.net/manual/es/book.mysqli.php">MySQL</a> y <a href="https://www.php.net">PHP</a></h4>
                 <h4>Para más información, <a href="https://www.github.com/allnulled/restomatic-php">ves aquí</a></h4>
             </div>
             <hr />

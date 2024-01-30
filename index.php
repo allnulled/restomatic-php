@@ -1,5 +1,7 @@
 <?php
 
+include("./settings.php");
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -11,7 +13,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 if ($method == "OPTIONS") {
 	die();
 }
-if(!file_exists("installed.txt")) {
+if (!file_exists("installed.txt")) {
 	include("installer.php");
 	die();
 }
@@ -36,7 +38,7 @@ class RequestState
 	public $parameters = null;
 	public $settings = null;
 	public $is_admin = IS_ADMIN;
-	public function __construct ($operation, $table, $model)
+	public function __construct($operation, $table, $model)
 	{
 		$GLOBALS["request_state"] = $this;
 		$this->model = $model;
@@ -63,9 +65,10 @@ class RequestState
 		return array_key_exists($key, $this->settings) ? $this->settings[$key] : $default_value;
 	}
 
-	public function expand_setting($key, $newdata) {
+	public function expand_setting($key, $newdata)
+	{
 		$exists = array_key_exists($key, $this->settings);
-		if(!$exists) {
+		if (!$exists) {
 			$this->settings[$key] = array();
 		}
 		$this->settings[$key] = array_merge($this->settings[$key], $newdata);
@@ -113,7 +116,8 @@ class FrameworkUtilities
 		}
 		include($fullpath);
 	}
-	public function generate_random_string($longitud) {
+	public function generate_random_string($longitud)
+	{
 		$alphabet = explode("", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
 		$random_string = "";
 		for ($i = 0; $i < $longitud; $i++) {
@@ -129,7 +133,11 @@ class Framework
 	public $database = null;
 	public function __construct()
 	{
-		$this->database = new SqliteDatabase("database.sqlite");
+		if(DATABASE_ADAPTER == "sqlite") {
+			$this->database = new SqliteDatabase(SQLITE_FILE);
+		} else if(DATABASE_ADAPTER == "mysql") {
+			$this->database = new MysqlDatabase(MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
+		}
 		$this->utils = new FrameworkUtilities($this);
 	}
 }
@@ -153,6 +161,33 @@ class SqliteDatabase
 	public function query($query)
 	{
 		return $this->native_db->query($query);
+	}
+}
+
+class MysqlDatabase {
+	public $database_host = null;
+	public $database_port = null;
+	public $database_user = null;
+	public $database_password = null;
+	public $database_name = null;
+	public $native_db = null;
+	public function __construct($host, $port, $user, $password, $name) {
+		$this->database_host = $host;
+		$this->database_port = intval($port);
+		$this->database_user = $user;
+		$this->database_password = $password;
+		$this->database_name = $name;
+		$this->native_db = mysqli_connect($host, $user, $password, $name, $port);
+		if(!$this->native_db) {
+			get_rest_framework()->utils->print_json(array(
+				"mensaje" => "No se pudo conectar a la base de datos (MySQL) (" . mysqli_connect_error() . ")"
+			));
+			die();
+		}
+	}
+	public function query($query)
+	{
+
 	}
 }
 
@@ -257,7 +292,7 @@ $framework = get_rest_framework();
 $utils = $framework->utils;
 $parameters = $utils->get_request_parameters();
 $operation = $utils->get_array_property($parameters, "operation", null);
-if($operation === "schema") {
+if ($operation === "schema") {
 	$schema_contents = file_get_contents("./schema.json");
 	echo $schema_contents;
 	return;

@@ -1,6 +1,13 @@
 <?php
 
-$database = new SQLite3("database.sqlite");
+include("./settings.php");
+
+$database = null;
+if(DATABASE_ADAPTER == "sqlite") {
+    $database = new SQLite3("database.sqlite");
+} else {
+    $database = mysqli_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
+}
 $code = $_POST["base_de_datos"];
 $password = $_POST["autentificador"];
 $structure = $_POST["estructura"];
@@ -13,7 +20,11 @@ if(empty($password)) {
     include("./installer.php");
     die();
 }
-$database->query($code . "\n" . $migration);
+if(DATABASE_ADAPTER == "sqlite") {
+    $database->query($code . "\n" . $migration);
+} else if(DATABASE_ADAPTER == "mysql") {
+    mysqli_query($database, $code . "\n" . $migration);
+}
 file_put_contents("installed.txt",$password);
 file_put_contents("schema.json", $structure);
 
