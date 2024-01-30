@@ -7,7 +7,7 @@
         "sentencia": "columna",
         "columna": "id",
         "tipo": "INTEGER",
-        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "detalles": "PRIMARY KEY AUTO_INCREMENT",
         "atributos": []
       },
       {
@@ -46,7 +46,7 @@
         "atributos": []
       }
     ],
-    "script": "CREATE TABLE Usuario (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    nombre VARCHAR(255) UNIQUE,\n    contrasenya VARCHAR(255),\n    correo_electronico VARCHAR(255),\n    imagen_de_perfil VARCHAR(516),\n    descripcion VARCHAR(255)\n);"
+    "script": "CREATE TABLE Usuario (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    nombre VARCHAR(255) UNIQUE,\n    contrasenya VARCHAR(255),\n    correo_electronico VARCHAR(255),\n    imagen_de_perfil VARCHAR(516),\n    descripcion VARCHAR(255)\n);"
   },
   {
     "tabla": "Permiso",
@@ -56,7 +56,7 @@
         "sentencia": "columna",
         "columna": "id",
         "tipo": "INTEGER",
-        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "detalles": "PRIMARY KEY AUTO_INCREMENT",
         "atributos": []
       },
       {
@@ -74,7 +74,7 @@
         "atributos": []
       }
     ],
-    "script": "\nCREATE TABLE Permiso (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    nombre VARCHAR(255) UNIQUE,\n    descripcion VARCHAR(255)\n);"
+    "script": "\nCREATE TABLE Permiso (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    nombre VARCHAR(255) UNIQUE,\n    descripcion VARCHAR(255)\n);"
   },
   {
     "tabla": "Usuario_y_permiso",
@@ -84,7 +84,7 @@
         "sentencia": "columna",
         "columna": "id",
         "tipo": "INTEGER",
-        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "detalles": "PRIMARY KEY AUTO_INCREMENT",
         "atributos": []
       },
       {
@@ -121,7 +121,7 @@
         "columna_foranea": "id"
       }
     ],
-    "script": "\nCREATE TABLE Usuario_y_permiso (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    id_usuario INTEGER,\n    id_permiso INTEGER,\n    detalles VARCHAR(255),\n    FOREIGN KEY (id_usuario) REFERENCES Usuario (id),\n    FOREIGN KEY (id_permiso) REFERENCES Permiso (id)\n);"
+    "script": "\nCREATE TABLE Usuario_y_permiso (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    id_usuario INTEGER,\n    id_permiso INTEGER,\n    detalles VARCHAR(255),\n    FOREIGN KEY (id_usuario) REFERENCES Usuario (id),\n    FOREIGN KEY (id_permiso) REFERENCES Permiso (id)\n);"
   },
   {
     "tabla": "Pais",
@@ -131,7 +131,7 @@
         "sentencia": "columna",
         "columna": "id",
         "tipo": "INTEGER",
-        "detalles": "PRIMARY KEY AUTOINCREMENT",
+        "detalles": "PRIMARY KEY AUTO_INCREMENT",
         "atributos": []
       },
       {
@@ -149,6 +149,6 @@
         "atributos": []
       }
     ],
-    "script": "\n\nCREATE TABLE Pais (\n    id INTEGER PRIMARY KEY AUTOINCREMENT,\n    pais VARCHAR(255),\n    iso VARCHAR(10)\n);"
+    "script": "\n\nCREATE TABLE Pais (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    pais VARCHAR(255),\n    iso VARCHAR(10)\n);"
   }
 ]

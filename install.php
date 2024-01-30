@@ -4,7 +4,7 @@ include("./settings.php");
 
 $database = null;
 if(DATABASE_ADAPTER == "sqlite") {
-    $database = new SQLite3("database.sqlite");
+    $database = new SQLite3(SQLITE_FILE);
 } else {
     $database = mysqli_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
 }
@@ -23,7 +23,7 @@ if(empty($password)) {
 if(DATABASE_ADAPTER == "sqlite") {
     $database->query($code . "\n" . $migration);
 } else if(DATABASE_ADAPTER == "mysql") {
-    mysqli_query($database, $code . "\n" . $migration);
+    mysqli_multi_query($database, $code . "\n" . $migration);
 }
 file_put_contents("installed.txt",$password);
 file_put_contents("schema.json", $structure);

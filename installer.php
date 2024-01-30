@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalador de API REST automática</title>
+    <title>Automatic HTTP REST API installer</title>
     <style>
         * {
             box-sizing: border-box;
@@ -73,34 +73,42 @@
     <div class="page">
         <form action="install.php" method="POST">
             <div style="padding: 4px;text-align: center;">
-                <h2>De SQL a API REST automáticamente</h2>
-                <h4 style="padding: 12px;">Usando <a href="https://www.php.net/manual/es/book.sqlite3.php">SQLite</a> o <a href="https://www.php.net/manual/es/book.mysqli.php">MySQL</a> y <a href="https://www.php.net">PHP</a></h4>
-                <h4>Para más información, <a href="https://www.github.com/allnulled/restomatic-php">ves aquí</a></h4>
+                <h2>From SQL to API REST automatically</h2>
+                <h4 style="padding: 12px;">Using 
+                <?php
+                    if(DATABASE_ADAPTER == "sqlite") {
+                        ?><a href="https://www.php.net/manual/es/book.sqlite3.php">SQLite</a><?php
+                    } else if (DATABASE_ADAPTER == "mysql") {
+                        ?><a href="https://www.php.net/manual/es/book.mysqli.php">MySQL</a><?php
+                    }
+                ?>
+                and <a href="https://www.php.net">static PHP</a></h4>
+                <h4>For more info, go <a href="https://www.github.com/allnulled/restomatic-php">here</a></h4>
             </div>
             <hr />
             <div style="padding:4px;">
-                <div>AUTENTIFICADOR:</div>
-                <div class="explicacion_de_campo">Este campo se requerirá en la cabecera HTTP de «Authorization» de todas las peticiones para las operaciones INSERT, UPDATE y DELETE.</div>
-                <input class="input_de_texto" type="text" name="autentificador" />
+                <div>AUTHORIZATION TOKEN:</div>
+                <div class="explicacion_de_campo">This field is required on every INSERT, UPDATE and DELETE operations.</div>
+                <input class="input_de_texto" type="text" name="autentificador" placeholder="Secret administration token" />
             </div>
             <div style="padding:4px;">
-                <div>BASE DE DATOS:</div>
-                <div class="explicacion_de_campo">Este campo debe contener la creación de tablas de la base de datos. Se parseará con <a href="https://github.com/allnulled/hyper-query-language">HQL</a> para deducir la estructura de datos.</div>
-                <textarea id="base_de_datos" oninput="actualiza_estructura()" name="base_de_datos" class="textarea_de_codigo" placeholder="SQL para crear tablas" spellcheck="false"></textarea>
+                <div>DATABASE SOURCE CODE:</div>
+                <div class="explicacion_de_campo">This field is the source code that creates the tables in the database. It will be parsed with <a href="https://github.com/allnulled/hyper-query-language">HQL</a> to deduce the data model structure.</div>
+                <textarea id="base_de_datos" oninput="actualiza_estructura()" name="base_de_datos" class="textarea_de_codigo" placeholder="SQL to create tables" spellcheck="false"></textarea>
                 <div id="error_en_base_de_datos" class="error_en_base_de_datos" onclick="this.innerHTML = ''"></div>
             </div>
             <div style="padding:4px;">
-                <div>ESTRUCTURA DEL MODELO DE DATOS:</div>
-                <div class="explicacion_de_campo">Este campo es autogenerado, y representa la estructura del modelo de datos de la base de datos.</div>
-                <textarea id="estructura" name="estructura" readonly="true" class="textarea_de_codigo" placeholder="JSON con la estructura de tablas" spellcheck="false"></textarea>
+                <div>DATA MODEL STRUCTURE:</div>
+                <div class="explicacion_de_campo">This field is automatically generated, and represents the structure of the data model.</div>
+                <textarea id="estructura" name="estructura" readonly="true" class="textarea_de_codigo" placeholder="JSON with the tables structure" spellcheck="false"></textarea>
             </div>
             <div style="padding:4px;">
-                <div>PRIMERA MIGRACIÓN:</div>
-                <div class="explicacion_de_campo">Fuera de las sentencias de crear tablas, puede que quieras realizar una primera migración de datos. Aquí puedes hacer los INSERTs que necesites.</div>
-                <textarea name="migracion" class="textarea_de_codigo" placeholder="SQL para insertar datos" spellcheck="false"></textarea>
+                <div>FIRST MIGRATION:</div>
+                <div class="explicacion_de_campo">Out of «CREATE TABLE» sentences, you may want to commit the first migration of data. Here you can code all the INSERTs you need.</div>
+                <textarea name="migracion" class="textarea_de_codigo" placeholder="SQL to insert data" spellcheck="false"></textarea>
             </div>
             <div style="text-align:right; padding: 4px; padding-top: 0px;">
-                <input type="submit" class="boton" value="Crear API REST" />
+                <input type="submit" class="boton" value="Create REST API" />
             </div>
         </form>
     </div>
