@@ -19,8 +19,26 @@ CREATE TABLE Usuario_y_permiso (
     FOREIGN KEY (id_usuario) REFERENCES Usuario (id),
     FOREIGN KEY (id_permiso) REFERENCES Permiso (id)
 );
-CREATE TABLE Pais (
+CREATE TABLE Entrada_de_blog (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    pais VARCHAR(255),
-    iso VARCHAR(10)
+    titulo VARCHAR(512),
+    subtitulo VARCHAR(1024),
+    contenido TEXT,
+    fecha_de_creacion DATETIME,
+    imagen TEXT
+);
+CREATE TABLE Libro_de_biblioteca (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(512),
+    subtitulo VARCHAR(512),
+    resumen TEXT
+);
+CREATE TABLE Capitulo_de_libro (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(512),
+    subtitulo VARCHAR(512),
+    contenido TEXT,
+    orden INTEGER,
+    id_libro INTEGER,
+    FOREIGN KEY (id_libro) REFERENCES Libro_de_biblioteca (id)
 );

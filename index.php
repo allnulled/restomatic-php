@@ -13,7 +13,7 @@ if (!file_exists("installed.txt")) {
 header("Content-Type: application/json");
 $admin_token = file_get_contents("./installed.txt");
 $request_headers = apache_request_headers();
-$request_token = array_key_exists("Authorization", $request_headers) ? $request_headers["Authorization"] : "";
+$request_token = array_key_exists("AUTHENTICATION", $request_headers) ? $request_headers["AUTHENTICATION"] : "";
 $is_admin = (!empty($request_token)) && ($admin_token === $request_token);
 define("IS_ADMIN", $is_admin);
 

@@ -87,8 +87,8 @@
             </div>
             <hr />
             <div style="padding:4px;">
-                <div>AUTHORIZATION TOKEN:</div>
-                <div class="explicacion_de_campo">This field is required on every INSERT, UPDATE and DELETE operations.</div>
+                <div>AUTHENTICATION TOKEN:</div>
+                <div class="explicacion_de_campo">This field is required as «Authentication» (not «Authorization») HTTP header on every INSERT, UPDATE and DELETE operations.</div>
                 <input class="input_de_texto" type="text" name="autentificador" placeholder="Secret administration token" />
             </div>
             <div style="padding:4px;">

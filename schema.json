@@ -124,7 +124,7 @@
     "script": "\nCREATE TABLE Usuario_y_permiso (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    id_usuario INTEGER,\n    id_permiso INTEGER,\n    detalles VARCHAR(255),\n    FOREIGN KEY (id_usuario) REFERENCES Usuario (id),\n    FOREIGN KEY (id_permiso) REFERENCES Permiso (id)\n);"
   },
   {
-    "tabla": "Pais",
+    "tabla": "Entrada_de_blog",
     "atributos": [],
     "composicion": [
       {
@@ -136,19 +136,130 @@
       },
       {
         "sentencia": "columna",
-        "columna": "pais",
+        "columna": "titulo",
         "tipo": "VARCHAR",
-        "detalles": "(255)",
+        "detalles": "(512)",
         "atributos": []
       },
       {
         "sentencia": "columna",
-        "columna": "iso",
+        "columna": "subtitulo",
         "tipo": "VARCHAR",
-        "detalles": "(10)",
+        "detalles": "(1024)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "contenido",
+        "tipo": "TEXT",
+        "detalles": "",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "fecha_de_creacion",
+        "tipo": "DATETIME",
+        "detalles": "",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "imagen",
+        "tipo": "TEXT",
+        "detalles": "",
         "atributos": []
       }
     ],
-    "script": "\nCREATE TABLE Pais (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    pais VARCHAR(255),\n    iso VARCHAR(10)\n);"
+    "script": "\nCREATE TABLE Entrada_de_blog (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    titulo VARCHAR(512),\n    subtitulo VARCHAR(1024),\n    contenido TEXT,\n    fecha_de_creacion DATETIME,\n    imagen TEXT\n);"
+  },
+  {
+    "tabla": "Libro_de_biblioteca",
+    "atributos": [],
+    "composicion": [
+      {
+        "sentencia": "columna",
+        "columna": "id",
+        "tipo": "INTEGER",
+        "detalles": "PRIMARY KEY AUTO_INCREMENT",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "titulo",
+        "tipo": "VARCHAR",
+        "detalles": "(512)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "subtitulo",
+        "tipo": "VARCHAR",
+        "detalles": "(512)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "resumen",
+        "tipo": "TEXT",
+        "detalles": "",
+        "atributos": []
+      }
+    ],
+    "script": "\nCREATE TABLE Libro_de_biblioteca (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    titulo VARCHAR(512),\n    subtitulo VARCHAR(512),\n    resumen TEXT\n);"
+  },
+  {
+    "tabla": "Capitulo_de_libro",
+    "atributos": [],
+    "composicion": [
+      {
+        "sentencia": "columna",
+        "columna": "id",
+        "tipo": "INTEGER",
+        "detalles": "PRIMARY KEY AUTO_INCREMENT",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "titulo",
+        "tipo": "VARCHAR",
+        "detalles": "(512)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "subtitulo",
+        "tipo": "VARCHAR",
+        "detalles": "(512)",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "contenido",
+        "tipo": "TEXT",
+        "detalles": "",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "orden",
+        "tipo": "INTEGER",
+        "detalles": "",
+        "atributos": []
+      },
+      {
+        "sentencia": "columna",
+        "columna": "id_libro",
+        "tipo": "INTEGER",
+        "detalles": "",
+        "atributos": []
+      },
+      {
+        "sentencia": "clave foránea",
+        "columna": "id_libro",
+        "tabla_foranea": "Libro_de_biblioteca",
+        "columna_foranea": "id"
+      }
+    ],
+    "script": "\nCREATE TABLE Capitulo_de_libro (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    titulo VARCHAR(512),\n    subtitulo VARCHAR(512),\n    contenido TEXT,\n    orden INTEGER,\n    id_libro INTEGER,\n    FOREIGN KEY (id_libro) REFERENCES Libro_de_biblioteca (id)\n);"
   }
 ]
