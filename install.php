@@ -34,7 +34,7 @@ file_put_contents("schema.json", $structure);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalador de API REST automática</title>
+    <title>Restomatic - Installation</title>
     <style>
         * {
             box-sizing: border-box;
@@ -91,32 +91,35 @@ file_put_contents("schema.json", $structure);
     <div class="page">
         <form action="install.php" method="POST">
             <div style="padding: 4px;text-align: center;">
-                <h2>Instalación completada</h2>
-                <h4 style="padding: 12px;">Ya puedes empezar a usar la API REST</h4>
-                <h4>El punto de entrada es <a href="./index.php">aquí</a></h4>
+                <h2>Installation completed</h2>
+                <h4 style="padding: 12px;">You can start using your REST API</h4>
+                <h4>The entry point is <a href="./index.php">here</a></h4>
             </div>
             <hr />
-            <div style="padding:12px; text-align: center;">¡Tu <b>API REST</b> ya está funcionando!</div>
+            <div style="padding:12px; text-align: center;">¡Your <b>REST API</b> is already working!</div>
             <hr />
             <div style="padding:4px; font-size: 11px;">
-                <div style="text-align: justify;">Solo tienes que empezar a hacer peticiones REST. Pero antes de que te vayas, puedes recordar algunos puntos sobre cómo deben ser todas las peticiones:</div>
+                <div style="text-align: justify;">
+                You just have to start making REST requests.
+                But before you go, you can remember some points about how requests must be:
+                </div>
                 <ul style="padding-left: 20px;">
-                    <li>Deben ser con el método POST.</li>
-                    <li>Deben contener la cabecera "Content-Type: application/json".</li>
-                    <li>Deben contener el parámetro «operation» con select, insert, update o delete.</li>
-                    <li>Deben contener el parámetro «table» con el nombre de la tabla.</li>
-                    <li>Deben contener en su cuerpo directamente el JSON que se pasa.</li>
+                    <li>They must be made with the POST method.</li>
+                    <li>They must contain the header "Content-Type: application/json".</li>
+                    <li>They must contain the parameter «operation» with select, insert, update or delete.</li>
+                    <li>They must contain the parameter «table» with the name of the table.</li>
+                    <li>They must contain, in its body, directly the JSON that is passed by.</li>
                 </ul>
                 <div>
-                    <div>En cuanto a las operaciones, cabe recordar que:</div>
+                    <div>About the operations, you must remember that:</div>
                     <ul style="padding-left: 20px;">
-                        <li>En el caso del SELECT, no hay nada que hacer: devolverá todos los registros de la tabla que especifiquemos, simplemente.</li>
-                        <li>En el caso del INSERT, hay 1 parámetro añadido: «value» que debe ser un objeto con los valores a insertar.</li>
-                        <li>En el caso del UPDATE, hay 2 parámetros añadido: «value» que debe ser un objeto con los valores a actualizar, e «id» que debe ser un número entero con el ID del registro a actualizar.</li>
-                        <li>En el caso del DELETE, hay 1 parámetro añadido: «id» que debe ser un número entero con el ID del registro a eliminar.</li>
+                        <li>In the case of the SELECT, there is nothing you can do: it will simply return all the records of the table we specify.</li>
+                        <li>In the case of the INSERT, there is 1 added parameter: «value» that must be an object with the values to insert.</li>
+                        <li>In the case of the UPDATE, there are 2 added parameters: «value» that must be an object with the values to update, and «id» that must be an integer with the ID of the record to update.</li>
+                        <li>In the case of the DELETE, there is 1 added parameter: «id» that must be an integer with the ID of the record to delete.</li>
                     </ul>
                 </div>
-                <div>Y ya está. Con esto, ya deberías tener claro todo lo que hay que saber.</div>
+                <div>And that is all. With this, you should know how to exploit this tool.</div>
             </div>
             <hr/>
             <div style="font-size: 11px;padding:4px;">

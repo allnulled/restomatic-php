@@ -149,6 +149,6 @@
         "atributos": []
       }
     ],
-    "script": "\n\nCREATE TABLE Pais (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    pais VARCHAR(255),\n    iso VARCHAR(10)\n);"
+    "script": "\nCREATE TABLE Pais (\n    id INTEGER PRIMARY KEY AUTO_INCREMENT,\n    pais VARCHAR(255),\n    iso VARCHAR(10)\n);"
   }
 ]
