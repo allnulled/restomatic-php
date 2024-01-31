@@ -4,17 +4,11 @@ $env = parse_ini_file("./settings.env");
 $env = array(
     "DATABASE_ADAPTER" => "mysql",
     "SQLITE_FILE" => "./database.sqlite",
-    // "MYSQL_HOST" => "127.0.0.1",
-    // "MYSQL_PORT" => "3306",
-    // "MYSQL_USER" => "root",
-    // "MYSQL_PASSWORD" => "",
-    // "MYSQL_DATABASE" => "example",
-    "MYSQL_HOST" => "yourhost",
-    "MYSQL_PORT" => "yourport",
-    "MYSQL_USER" => "youruser",
-    "MYSQL_PASSWORD" => "yourpassword",
-    "MYSQL_DATABASE" => "yourdatabase",
-
+    "MYSQL_HOST" => "127.0.0.1",
+    "MYSQL_PORT" => "3306",
+    "MYSQL_USER" => "root",
+    "MYSQL_PASSWORD" => "",
+    "MYSQL_DATABASE" => "example",
 );
 
 foreach ($env as $key => $value) {
