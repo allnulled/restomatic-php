@@ -286,7 +286,7 @@ $utils = $framework->utils;
 $parameters = $utils->get_request_parameters();
 $operation = $utils->get_array_property($parameters, "operation", null);
 if ($operation === "schema") {
-	$schema_contents = file_get_contents("./schema.json");
+	$schema_contents = file_get_contents("./database/schema.json");
 	echo $schema_contents;
 	return;
 }

@@ -1,9 +1,8 @@
 <?php
 
-$env = parse_ini_file("./settings.env");
 $env = array(
     "DATABASE_ADAPTER" => "mysql",
-    "SQLITE_FILE" => "./database.sqlite",
+    "SQLITE_FILE" => "./database/database.sqlite",
     "MYSQL_HOST" => "127.0.0.1",
     "MYSQL_PORT" => "3306",
     "MYSQL_USER" => "root",
