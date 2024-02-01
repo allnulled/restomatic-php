@@ -12,9 +12,8 @@ To build easy and fast HTTP REST APIs using static PHP and SQL database (SQLite 
 
 1. Download the project.
 2. Place the project on the folder of the static PHP server you prefer.
-3. Set your specific environment variables on «settings.env».
-   1. Mainly, the database type (sqlite or mysql) and file or credentials. Be sure to never upload this file to your public repositories. The file in this project is uploaded as template and to mention the remarkable variables.
-4. Visit the «index.php» with the navigator in order to open the installator. *Image 1.* ![Instalador](./tester/img/instalador.png)
+3. Set your specific environment variables on «settings.php». The database connection credentials and things like that.
+4. Visit the «index.php» with the navigator in order to open the installator. The «installer.php» will load. *Image 1.* ![Instalador](./tester/img/instalador.png)
 5. Fulfill the installator. *Image 2.* ![Instalador](./tester/img/instalador_2.png)
    1. This implies you give credentials to connect to a MySQL/SQLite **EMPTY** database.
    2. This also implies to have **AN EMPTY** database. So: empty your database before the next step.
