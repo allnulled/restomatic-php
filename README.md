@@ -52,7 +52,7 @@ To reset the API on SQLite, follow the next steps:
 
 The project is minimal-oriented. But one of the goals was to support customizable business logic for the REST API. This is why *hooks*.
 
-When I say *hooks*, it is only a fixed lifecycle that can be customnized simply writting code in php files. Specifically, under the `hooks` folder, we can find all the hooks that are called during the natural lifeycle.
+When I say *hooks*, it is only a fixed lifecycle that can be customized simply writting code in php files. Specifically, under the `hooks` folder, we can find all the hooks that are called during the natural lifeycle.
 
 Each hook has a name and a folder (with that name), and most of that folders have 3 files inside:
   - `before.inc.php` used before the action.
