@@ -165,8 +165,7 @@ if (!$is_installed) {
             </div>
             <hr />
             <div style="font-size: 11px;padding:4px;">
-                <div>Para hacer pruebas, tienes el <a href="./jrtui">JSON Request Tester User Interface</a>. Con él
-                    puedes hacer las peticiones de prueba con todo lo que sabes ahora contra el servidor.</div>
+                <div>To test the API, you have the <a href="./tester/index.html">Tester</a>. With it, you can check that your server is responding OK to JSON and POST requests.</div>
             </div>
         </form>
     </div>

@@ -67,7 +67,7 @@
             vertical-align: middle;
         }
     </style>
-    <script src="lib/js/hql/hql.js"></script>
+    <script src="tester/lib/hql/hql.js"></script>
 </head>
 <body>
     <div class="page">
